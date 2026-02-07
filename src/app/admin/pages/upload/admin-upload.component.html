@@ -1,0 +1,35 @@
+<section class="upload">
+  <header class="topbar">
+    <h1>Upload de midia</h1>
+    <button class="ghost" (click)="logout()">Sair</button>
+  </header>
+
+  <form (ngSubmit)="submit()" class="card">
+    <label>
+      Titulo
+      <input type="text" name="title" [(ngModel)]="title" required />
+    </label>
+
+    <label>
+      Audio MIME type
+      <input type="text" name="audioMimeType" [(ngModel)]="audioMimeType" required />
+    </label>
+
+    <label>
+      Audio base64
+      <textarea name="audioBase64" [(ngModel)]="audioBase64" rows="6" required></textarea>
+    </label>
+
+    <label>
+      Imagem
+      <input type="file" accept="image/*" (change)="onFileChange($event)" required />
+    </label>
+
+    <button type="submit" [disabled]="loading">
+      {{ loading ? 'Enviando...' : 'Enviar midia' }}
+    </button>
+
+    <p class="success" *ngIf="message">{{ message }}</p>
+    <p class="error" *ngIf="error">{{ error }}</p>
+  </form>
+</section>

@@ -1,0 +1,24 @@
+<section class="login">
+  <div class="card">
+    <h1>Admin</h1>
+    <p>Entre para enviar midias.</p>
+
+    <form (ngSubmit)="submit()">
+      <label>
+        Usuario
+        <input type="text" name="name" [(ngModel)]="name" required />
+      </label>
+
+      <label>
+        Senha
+        <input type="password" name="password" [(ngModel)]="password" required />
+      </label>
+
+      <button type="submit" [disabled]="loading">
+        {{ loading ? 'Entrando...' : 'Entrar' }}
+      </button>
+
+      <p class="error" *ngIf="error">{{ error }}</p>
+    </form>
+  </div>
+</section>
