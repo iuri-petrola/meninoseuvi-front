@@ -1,0 +1,23 @@
+<section class="page">
+  <div class="page-header">
+    <h1>Midias</h1>
+    <p class="lead">Lista de imagens com audio integrado.</p>
+  </div>
+
+  <ng-container *ngIf="media$ | async as items; else loading">
+    <div *ngIf="items.length === 0" class="empty">Nenhuma midia encontrada.</div>
+    <div class="grid" *ngIf="items.length > 0">
+      <article class="card" *ngFor="let item of items">
+        <img class="thumb" [src]="item.imageUrl" [alt]="item.title" />
+        <div class="card-body">
+          <h3>{{ item.title }}</h3>
+          <audio controls [src]="audioSrc(item)"></audio>
+        </div>
+      </article>
+    </div>
+  </ng-container>
+
+  <ng-template #loading>
+    <div class="loading">Carregando midias...</div>
+  </ng-template>
+</section>

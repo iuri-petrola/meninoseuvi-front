@@ -1,0 +1,58 @@
+.page {
+  padding: 24px 0;
+}
+
+.page-header {
+  margin-bottom: 18px;
+}
+
+.lead {
+  color: #3b2b27;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  border: 1px solid #edd8d0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.thumb {
+  height: 180px;
+  width: 100%;
+  object-fit: cover;
+  background: linear-gradient(135deg, #b5654a 0%, #e0b3a4 100%);
+}
+
+.card-body {
+  padding: 14px;
+}
+
+.btn {
+  margin-top: 8px;
+  padding: 8px 14px;
+  border: 1px solid #b5654a;
+  background: transparent;
+  border-radius: 999px;
+  color: #b5654a;
+  font-weight: 600;
+}
+
+.loading,
+.empty {
+  padding: 24px 0;
+  color: #5a4a44;
+}
+
+audio {
+  width: 100%;
+  margin-top: 12px;
+}

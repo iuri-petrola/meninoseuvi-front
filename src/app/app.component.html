@@ -1,0 +1,19 @@
+<div class="app-shell">
+  <header class="site-header">
+    <a class="brand" routerLink="/">MeninosEuVi</a>
+    <nav class="nav">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+      <a routerLink="/media" routerLinkActive="active">Midias</a>
+      <a routerLink="/bio" routerLinkActive="active">Bio</a>
+      <a routerLink="/contato" routerLinkActive="active">Contato</a>
+    </nav>
+  </header>
+
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer class="site-footer">
+    <span>Marcos Sergio Pinheiro · Todos os direitos reservados</span>
+  </footer>
+</div>

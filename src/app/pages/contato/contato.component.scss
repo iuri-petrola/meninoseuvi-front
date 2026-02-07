@@ -1,0 +1,77 @@
+.page {
+  padding: 24px 0;
+}
+
+.lead {
+  color: #3b2b27;
+}
+
+.cards {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  border: 1px solid #edd8d0;
+  border-radius: 14px;
+  padding: 16px;
+  text-decoration: none;
+  color: #3b2b27;
+  background: #f7eee9;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(181, 101, 74, 0.15);
+}
+
+.tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  color: #b5654a;
+  margin-bottom: 6px;
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon svg {
+  width: 26px;
+  height: 26px;
+  fill: #fff;
+}
+
+.icon.whatsapp {
+  background: #25d366;
+}
+
+.icon.instagram {
+  background: linear-gradient(135deg, #f58529 0%, #dd2a7b 35%, #8134af 65%, #515bd4 100%);
+}
+
+.meta strong {
+  display: block;
+  font-size: 1.05rem;
+}
+
+.hint {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.9rem;
+  color: #5a4a44;
+}
