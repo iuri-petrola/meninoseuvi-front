@@ -14,7 +14,7 @@ export class AdminAuthService {
 
   login(name: string, password: string): Observable<AdminLoginResponse> {
     return this.http
-      .post<AdminLoginResponse>(`${environment.apiBaseUrl}/admin/login`, { name, password })
+      .post<AdminLoginResponse>(`${environment.apiBaseUrl}/api/admin/login`, { name, password })
       .pipe(tap((res) => this.setToken(res.token)));
   }
 
