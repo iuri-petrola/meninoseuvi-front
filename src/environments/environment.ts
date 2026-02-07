@@ -1,3 +1,3 @@
 export const environment = {
-  apiBaseUrl: 'https://meninoseuvi.net/api',
+  apiBaseUrl: 'https://meninoseuvi.net',
 };
