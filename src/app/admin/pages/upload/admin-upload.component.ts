@@ -16,6 +16,7 @@ export class AdminUploadComponent {
   title = '';
   audioMimeType = 'audio/mpeg';
   audioBase64 = '';
+  audioFileName = '';
   imageFile: File | null = null;
   loading = false;
   message = '';
@@ -30,6 +31,28 @@ export class AdminUploadComponent {
   onFileChange(event: Event) {
     const input = event.target as HTMLInputElement;
     this.imageFile = input.files && input.files.length > 0 ? input.files[0] : null;
+  }
+
+  onAudioChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const file = input.files && input.files.length > 0 ? input.files[0] : null;
+
+    if (!file) {
+      this.audioBase64 = '';
+      this.audioFileName = '';
+      return;
+    }
+
+    this.audioMimeType = file.type || 'audio/mpeg';
+    this.audioFileName = file.name;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result as string;
+      const commaIndex = result.indexOf(',');
+      this.audioBase64 = commaIndex >= 0 ? result.slice(commaIndex + 1) : result;
+    };
+    reader.readAsDataURL(file);
   }
 
   submit() {
@@ -56,6 +79,7 @@ export class AdminUploadComponent {
           this.message = 'Midia enviada com sucesso.';
           this.title = '';
           this.audioBase64 = '';
+          this.audioFileName = '';
           this.imageFile = null;
         },
         error: () => {

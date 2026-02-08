@@ -11,6 +11,12 @@
     </label>
 
     <label>
+      Audio (arquivo)
+      <input type="file" accept="audio/*" (change)="onAudioChange($event)" required />
+      <small *ngIf="audioFileName">Selecionado: {{ audioFileName }}</small>
+    </label>
+
+    <label>
       Audio MIME type
       <input type="text" name="audioMimeType" [(ngModel)]="audioMimeType" required />
     </label>
