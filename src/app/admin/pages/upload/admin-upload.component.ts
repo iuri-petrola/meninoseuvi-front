@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 import { AdminAuthService } from '../../services/admin-auth.service';
 import { AdminMediaService } from '../../services/admin-media.service';
 
@@ -87,8 +88,27 @@ export class AdminUploadComponent {
           this.audioFileName = '';
           this.imageFile = null;
         },
-        error: () => {
+        error: (err: unknown) => {
           this.loading = false;
+          const status =
+            err instanceof HttpErrorResponse
+              ? err.status
+              : typeof err === 'object' && err && 'status' in err
+                ? (err as { status?: number }).status
+                : undefined;
+          const message =
+            err instanceof HttpErrorResponse
+              ? err.error?.error
+              : typeof err === 'object' && err && 'error' in err
+                ? (err as { error?: string }).error
+                : undefined;
+          console.log('UPLOAD_ERR', err);  
+          if (status === 401 || status === 403 || message === 'Token invalido') {
+            sessionStorage.setItem('mev_admin_expired', '1');
+            this.auth.logout();
+            this.router.navigateByUrl('/admin/login');
+            return;
+          }
           this.error = 'Erro ao enviar midia.';
         }
       });

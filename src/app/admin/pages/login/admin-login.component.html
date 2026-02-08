@@ -18,6 +18,7 @@
         {{ loading ? 'Entrando...' : 'Entrar' }}
       </button>
 
+      <p class="info" *ngIf="info">{{ info }}</p>
       <p class="error" *ngIf="error">{{ error }}</p>
     </form>
   </div>

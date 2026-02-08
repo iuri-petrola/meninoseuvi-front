@@ -27,10 +27,44 @@ export class AdminAuthService {
   }
 
   isLoggedIn(): boolean {
-    return !!this.getToken();
+    const token = this.getToken();
+    if (!token) {
+      return false;
+    }
+
+    if (this.isTokenExpired(token)) {
+      this.logout();
+      sessionStorage.setItem('mev_admin_expired', '1');
+      return false;
+    }
+
+    return true;
   }
 
   private setToken(token: string) {
     localStorage.setItem(TOKEN_KEY, token);
+  }
+
+  isTokenExpired(token: string): boolean {
+    try {
+      const payload = this.decodeToken(token);
+      if (!payload?.exp) {
+        return false;
+      }
+      const nowInSeconds = Math.floor(Date.now() / 1000);
+      return payload.exp <= nowInSeconds;
+    } catch {
+      return false;
+    }
+  }
+
+  private decodeToken(token: string): { exp?: number } | null {
+    const parts = token.split('.');
+    if (parts.length !== 3) {
+      return null;
+    }
+    const payload = parts[1].replace(/-/g, '+').replace(/_/g, '/');
+    const decoded = atob(payload.padEnd(payload.length + (4 - (payload.length % 4)) % 4, '='));
+    return JSON.parse(decoded);
   }
 }

@@ -7,6 +7,7 @@ export const adminAuthGuard: CanActivateFn = () => {
   const router = inject(Router);
 
   if (!auth.isLoggedIn()) {
+    sessionStorage.setItem('mev_admin_expired', '1');
     router.navigateByUrl('/admin/login');
     return false;
   }
