@@ -64,6 +64,11 @@ export class AdminUploadComponent {
       return;
     }
 
+    if (!this.audioBase64) {
+      this.error = 'Selecione um audio.';
+      return;
+    }
+
     this.loading = true;
 
     this.mediaService
