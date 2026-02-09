@@ -9,10 +9,23 @@
     </div>
   </div>
   <div class="hero-card">
-    <div class="card-media"></div>
-    <div class="card-copy">
-      <h3>Selecao do dia</h3>
-      <p>Imagens com audio integrado para uma experiencia completa.</p>
-    </div>
+    <ng-container *ngIf="selection$ | async as item; else emptySelection">
+      <div class="card-media">
+        <img [src]="item.imageUrl" [alt]="item.title" />
+      </div>
+      <div class="card-copy">
+        <h3>Seleção do dia</h3>
+        <p class="title">{{ item.title }}</p>
+        <span class="date" *ngIf="item.createdAt">{{ item.createdAt | date:'dd/MM/yyyy HH:mm' }}</span>
+        <audio controls [src]="audioSrc(item)"></audio>
+      </div>
+    </ng-container>
+    <ng-template #emptySelection>
+      <div class="card-media placeholder"></div>
+      <div class="card-copy">
+        <h3>Selecao do dia</h3>
+        <p>Imagens com audio integrado para uma experiencia completa.</p>
+      </div>
+    </ng-template>
   </div>
 </section>
