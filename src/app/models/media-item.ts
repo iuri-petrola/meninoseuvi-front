@@ -4,4 +4,5 @@ export type MediaItem = {
   imageUrl: string;
   audioBase64: string;
   audioMimeType: string;
+  createdAt?: string;
 };

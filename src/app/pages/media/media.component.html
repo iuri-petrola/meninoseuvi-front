@@ -10,7 +10,10 @@
       <article class="card" *ngFor="let item of items">
         <img class="thumb" [src]="item.imageUrl" [alt]="item.title" />
         <div class="card-body">
-          <h3>{{ item.title }}</h3>
+          <div class="title-row">
+            <h3>{{ item.title }}</h3>
+            <span class="date" *ngIf="item.createdAt">{{ item.createdAt | date:'dd/MM/yyyy HH:mm' }}</span>
+          </div>
           <audio controls [src]="audioSrc(item)"></audio>
         </div>
       </article>

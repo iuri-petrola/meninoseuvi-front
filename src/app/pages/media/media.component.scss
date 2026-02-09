@@ -36,6 +36,19 @@
   padding: 14px;
 }
 
+.title-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.date {
+  font-size: 0.85rem;
+  color: #6b4b3a;
+  white-space: nowrap;
+}
+
 .btn {
   margin-top: 8px;
   padding: 8px 14px;
